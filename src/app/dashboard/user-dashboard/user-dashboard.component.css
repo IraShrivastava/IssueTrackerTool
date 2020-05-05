@@ -1,0 +1,56 @@
+.background{
+    background-image: url('C:/Users/IRA/Desktop/edWisor/Project/Issue Tracking Tool/issue-tracker/src/app/background/web-background-2.jpeg');
+    min-height: 100vh;
+}
+
+
+.firstChar{
+    border-radius: 100%;
+    line-height: 1em;
+    
+    text-align: center;
+    font-size: 2em;
+    padding: .2em;
+    margin: 0 0.5em 0 0;
+    width: 1.5em;
+    height: 1.5em;
+    float: left;
+    text-transform: uppercase;
+    background: white;
+}
+.table {
+    border-radius: 5px;
+    width: 80%;
+    margin: 0px auto;
+    float: none;
+}
+
+.profile{
+    display: flex;
+    align-items: center; 
+    border: 2px solid white;
+    padding: 0.5em;
+    border-radius:1px;
+    justify-content: space-between; 
+}
+
+.incenter{
+    text-align: center;
+}
+.scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+.cardOne {
+      flex: 0 0 auto;
+    }
+::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+}
+ 
+.dropdown-menu{
+    max-height: 150px;
+    overflow-y: auto
+}

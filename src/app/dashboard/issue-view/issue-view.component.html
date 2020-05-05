@@ -1,0 +1,75 @@
+<!--p>issue-view works!</p-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class=" container-fluid background">
+  <div class="row p-5" style="text-align:left">
+    <div class="col-md-12">
+      <div class="bg-div">
+        <div class="row" style="justify-items: center" *ngIf="responseData">
+          <div class="col-md-12" style="color: white;">
+            <h2>{{responseData.title}}</h2>
+            <hr>
+            <h5>Created by {{responseData.reporter}} on {{responseData.createdOn | date}}</h5>
+            <hr>
+            <h4>Description of the Issue:-</h4>
+            <p>{{responseData.description}}</p>
+            <hr>
+            <h5>Status - {{responseData.status}}</h5>
+            <hr>
+            <h5>Assigned To - {{responseData.assignedTo}}</h5>
+            <hr>
+            <h6>Attachments -</h6>
+            <a *ngFor="let name of fileName; let i = index" (click)="download(i)"
+              style="cursor: pointer; color: blue"><i class="fas fa-paperclip"></i> {{name}}
+              <br></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row p-3" *ngIf="responseData" style="display: flex; justify-content: space-between">
+
+          <a class="btn btn-warning btn-lg" (click)="goBack()" style="color: white; margin-top: 10px">Go Back</a>
+
+          <a class="btn btn-danger btn-lg" style="margin-top: 10px; color: white" (click)="deleteIssue()">Delete</a>
+
+          <a class="btn btn-info btn-lg" [routerLink]="['/issue-edit/',responseData.issueId]"
+            style="margin-top: 10px">Edit</a>
+
+          <a class="btn btn-success btn-lg" style="color: white; margin-top: 10px" (click)="watch()">{{ text }}</a>
+          <!--get watcher for the issue-->
+          <!--a class="btn btn-info btn-lg dropdown-toggle" id="dropdownMenuButton" (click)="allwatchers()"
+            data-toggle="dropdown" style="color : white; margin-top: 10px;">Watcher</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <ul class="watchers">
+              <li *ngFor="let x of watchers">
+                <span>{{x.userName}}</span>
+              </li>
+            </ul>
+          </div-->
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <ul class="list-group" style="width:100%; padding-bottom: 5vh;">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Comment here</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" [(ngModel)]="comment"
+          placeholder="Enter Comment here...."></textarea>
+        <button class="btn btn-secoundry btn-outline-light" style="float:Right" style="color: white;"
+          (click)="addComment()">comment</button>
+      </div>
+      <span *ngIf="commentData">
+        <span *ngFor="let comments of commentData.slice().reverse()">
+          <li class="list-group-item list-group-item-light"><b>{{comments.reporter}}</b><br>
+            {{comments.description}}
+            <br>
+            <span style="font-size:smaller" style="color: white;">{{comments.createdOn | date:"short"}}</span>
+          </li>
+        </span>
+      </span>
+    </ul>
+  </div>
+</div>
